@@ -12,7 +12,7 @@
 
     <groupId>com.github.xiaobingzhou</groupId>
     <artifactId>message-frame-sample</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <dependencies>
         <dependency>
@@ -23,7 +23,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        
         </dependency>
     </dependencies>
 </project>   
