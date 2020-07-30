@@ -12,7 +12,12 @@
 
     <groupId>com.github.xiaobingzhou</groupId>
     <artifactId>message-frame-sample</artifactId>
-    <version>1.1</version>
+    <version>1.1.2</version>
+
+    <properties>
+        <docker.image.prefix>xiaobingzhou</docker.image.prefix>
+        <docker.image.host>http://47.93.140.29:2375</docker.image.host>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -25,4 +30,45 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-</project>   
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+                    <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                    <dockerHost>${docker.image.host}</dockerHost>
+                    <!-- serverId push 配置在 setting.xml -->
+                    <!--<serverId>docker-hub</serverId>-->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <!--执行 mvn package 时 自动 执行 mvn docker:build-->
+                    <!--<execution>-->
+                        <!--<id>build-image</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>build</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                </executions>
+                <!-- 运行命令 mvn clean package docker:build 打包并生成docker镜像 -->
+            </plugin>
+        </plugins>
+
+    </build>
+</project>
