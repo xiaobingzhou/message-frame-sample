@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.github.xiaobingzhou</groupId>
             <artifactId>message-frame</artifactId>
-            <version>1.6.0.RELEASE</version>
+            <version>1.6.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
