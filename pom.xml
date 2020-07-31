@@ -16,11 +16,11 @@
 
     <properties>
         <!-- aliyun 镜像地址: registry.cn-beijing.aliyuncs.com/xiaobingzhou-->
-        <docker.image.prefix>registry.cn-beijing.aliyuncs.com/xiaobingzhou</docker.image.prefix>
-        <docker.server.id>docker-aliyun</docker.server.id>
+        <!--<docker.image.prefix>registry.cn-beijing.aliyuncs.com/xiaobingzhou</docker.image.prefix>-->
+        <!--<docker.server.id>docker-aliyun</docker.server.id>-->
         <!-- docker hub镜像地址: docker.io/xiaobingzhou -->
-<!--        <docker.image.prefix>xiaobingzhou</docker.image.prefix>-->
-<!--        <docker.server.id>docker-hub</docker.server.id>-->
+        <docker.image.prefix>xiaobingzhou</docker.image.prefix>
+        <docker.server.id>docker-hub</docker.server.id>
         <!--安装了docker的服务器地址，同时docker需要打开远程连接端口2375-->
         <docker.image.host>http://47.93.140.29:2375</docker.image.host>
     </properties>
@@ -53,7 +53,7 @@
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <dockerHost>${docker.image.host}</dockerHost>
                     <imageTags>
-                        <!-- docker的imageName有当前项目版本号，再加上imageTag的 latest -->
+                        <!-- docker 会打两个tag，一个tag是项目版本号，另一个tag是latest -->
                         <imageTag>latest</imageTag>
                     </imageTags>
                     <!-- 此serverId需要和settings.xml中的server的id相对应-->
