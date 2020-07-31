@@ -22,7 +22,7 @@
         <docker.image.prefix>xiaobingzhou</docker.image.prefix>
         <docker.server.id>docker-hub</docker.server.id>
         <!--安装了docker的服务器地址，同时docker需要打开远程连接端口2375-->
-        <docker.image.host>http://47.93.140.29:2375</docker.image.host>
+        <docker.image.host>http://localhost:2375</docker.image.host>
     </properties>
 
     <dependencies>
