@@ -12,12 +12,17 @@
 
     <groupId>com.github.xiaobingzhou</groupId>
     <artifactId>message-frame-sample</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.4</version>
 
     <properties>
+        <!-- aliyun 镜像地址: registry.cn-beijing.aliyuncs.com/xiaobingzhou-->
+        <!--<docker.image.prefix>registry.cn-beijing.aliyuncs.com/xiaobingzhou</docker.image.prefix>-->
+        <!--<docker.server.id>docker-aliyun</docker.server.id>-->
+        <!-- docker hub镜像地址: docker.io/xiaobingzhou -->
         <docker.image.prefix>xiaobingzhou</docker.image.prefix>
+        <docker.server.id>docker-hub</docker.server.id>
         <!--安装了docker的服务器地址，同时docker需要打开远程连接端口2375-->
-        <docker.image.host>http://127.0.0.1:2375</docker.image.host>
+        <docker.image.host>http://localhost:2375</docker.image.host>
     </properties>
 
     <dependencies>
@@ -44,11 +49,15 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.0</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <dockerHost>${docker.image.host}</dockerHost>
-                    <!-- serverId push 配置在 setting.xml -->
-                    <!--<serverId>docker-hub</serverId>-->
+                    <imageTags>
+                        <!-- docker的tag为项目版本号 -->
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                    <!-- 此serverId需要和settings.xml中的server的id相对应-->
+                    <serverId>${docker.server.id}</serverId>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
