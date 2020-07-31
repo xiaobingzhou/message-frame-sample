@@ -16,7 +16,8 @@
 
     <properties>
         <docker.image.prefix>xiaobingzhou</docker.image.prefix>
-        <docker.image.host>http://47.93.140.29:2375</docker.image.host>
+        <!--安装了docker的服务器地址，同时docker需要打开远程连接端口2375-->
+        <docker.image.host>http://127.0.0.1:2375</docker.image.host>
     </properties>
 
     <dependencies>
@@ -44,7 +45,7 @@
                 <version>1.2.0</version>
                 <configuration>
                     <imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
-                    <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <dockerHost>${docker.image.host}</dockerHost>
                     <!-- serverId push 配置在 setting.xml -->
                     <!--<serverId>docker-hub</serverId>-->
